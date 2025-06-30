@@ -1,8 +1,14 @@
 body {
   font-family: sans-serif;
   padding: 2rem;
-  background: #f7f7f7;
+  background: #649eaf;
 }
 button {
   margin-top: 1rem;
+}
+
+.main-content-div {
+  border: black solid;
+  border-radius: 10px;
+  background-color: rgba(200, 237, 252, 0.432);
 }
