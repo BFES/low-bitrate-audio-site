@@ -16,6 +16,9 @@ loadFFmpeg();
 
 document.getElementById('convertBtn').addEventListener('click', async () => {
   const uploader = document.getElementById('uploader');
+  const link = document.querySelector(".download-link");
+  link.href = "";
+  link.textContent = '';
   if (uploader.files.length === 0) {
     alert('Please select a file.');
     return;
@@ -42,11 +45,9 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
 
   const url = URL.createObjectURL(new Blob([data2.buffer], { type: 'audio/mpeg' }));
 
-  const link = document.createElement('a');
   link.href = url;
   link.download = 'output.mp3';
   link.textContent = 'Download converted file';
-  document.body.appendChild(link);
 
   status.textContent = 'Done!';
 });
