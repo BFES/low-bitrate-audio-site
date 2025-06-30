@@ -9,7 +9,7 @@ const status = document.getElementById('status');
 const loadFFmpeg = async () => {
   status.textContent = 'Loading FFmpeg...';
   await ffmpeg.load();
-  status.textContent = 'FFmpeg ready!';
+  status.textContent = 'Ready!';
 };
 
 loadFFmpeg();
