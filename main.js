@@ -14,6 +14,7 @@ const loadFFmpeg = async () => {
 
 loadFFmpeg();
 
+
 document.getElementById('convertBtn').addEventListener('click', async () => {
   const uploader = document.getElementById('uploader');
   const link = document.querySelector(".download-link");
@@ -24,7 +25,14 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
     return;
   }
 
+
   const file = uploader.files[0];
+
+  if (!file.type.startsWith('audio/')) {
+    alert('Please upload a valid audio file!');
+    uploader.value = '';
+    return;
+  }
 
   status.textContent = 'Converting...';
 
