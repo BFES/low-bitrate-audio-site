@@ -20,15 +20,14 @@
   <meta name="google-adsense-account" content="ca-pub-8013587334483656">
 
   <link rel="icon" href="/assets/favicon-QPS6MeOD.ico" />
-  <script type="module" crossorigin src="/assets/main-qIQvOhNt.js"></script>
+  <script type="module" crossorigin src="/assets/video-BhQPLimN.js"></script>
   <link rel="modulepreload" crossorigin href="/assets/types-KFQB6SzD.js">
   <link rel="stylesheet" crossorigin href="/assets/types-D6k0V_jA.css">
 </head>
 <body>
   <div class="main-content-div">
     <h1>Radio Sounds</h1>
-    <h2>Easily make your audio files sound "low quality," for free!</h2>
-
+    <h2>Easily combine an audio file and an image to turn it into a video, for free!</h2>
 
     <nav class="nav-buttons">
       <p id="toHome">Home</p>
@@ -36,17 +35,20 @@
     </nav>
 
     <div>
-      <p>This feature does exactly what it sounds like. Upload an audio file, wait a few seconds, download, and then enjoy the soothing sounds of low quality audio!</p>
+      <p>This feature is <strong>EXPERIMENTAL.</strong> It takes a long time and may or may not work, depending on your system and/or browser. It is reccomended that you try a short audio file, so that the combination process does not take as long. because it can be quite lengthy otherwise.</p>
     </div>
 
-
-    <input type="file" id="audioUploader" accept="audio/*" />
-    <button class="convertBtn" id="convertBtn">Make Low Quality!</button>
+    <label>Audio File
+        <input type="file" name="audio" id="audioUploader" accept="audio/*" />
+    </label>
+    <label>
+        Image File
+        <input type="file" id="imageUploader" accept="image/*" >
+    </label>
+    <button class="convertBtn" id="combineBtn">Combine The Two!</button>
     <p id="status"></p>
     <a class="download-link" href=""></a>
   </div>
-
-
   <div class="info-section">
     <h3>About Radio Sounds and BFES LLC</h3>
     <p>
