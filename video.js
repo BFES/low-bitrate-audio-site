@@ -1,9 +1,18 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { fetchFile } from '@ffmpeg/util';
 
+document.getElementById('toHome').addEventListener('click', () => {
+  window.location.href = 'index.html';  // or your audio reducer page
+});
+
+document.getElementById('toVideoMaker').addEventListener('click', () => {
+  window.location.href = 'video.html';  // or your video maker page
+});
+
+
 const ffmpeg = new FFmpeg({
     log: true,
-    corePath: '/node_modules/@ffmpeg/core/dist/ffmpeg-core.js',
+    corePath: '/node_modules/@ffmpeg/core-mt/dist/ffmpeg-core.js',
 });
 const status = document.getElementById('status');
 
@@ -69,8 +78,9 @@ document.getElementById('combineBtn').addEventListener('click', async () => {
     '-c:v', 'libx264',
     '-tune', 'stillimage',
     '-c:a', 'aac',
-    '-b:a', '192k',
+    '-b:a', '8k',
     '-pix_fmt', 'yuv420p',
+    '-threads', '4',
     '-shortest',
     'output.mp4'
   ]);

@@ -11,6 +11,27 @@ body {
   min-height: 100vh;
 }
 
+/* ========== Navigation Buttons ========= */
+.nav-buttons {
+  display: flex;
+  gap: 1rem; /* space between buttons */
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* optional if you want them to stack on small screens */
+}
+
+.nav-buttons p {
+  margin: 1rem auto 0;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-bottom: solid #333;
+  transition: background-color .5s;
+}
+
+.nav-buttons p:hover {
+  background-color: #d1d1d1;
+}
+
 /* ========== Main Content (Desktop) ========== */
 .main-content-div {
   border: black solid;
@@ -49,7 +70,7 @@ input[type="file"] {
   max-width: 100%;
 }
 
-button {
+.convertBtn {
   display: block;
   margin: 1rem auto 0;
   padding: 0.75rem 1.5rem;
@@ -61,7 +82,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.convertBtn:hover {
   background: #45a049;
 }
 

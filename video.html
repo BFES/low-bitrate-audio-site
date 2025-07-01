@@ -26,6 +26,16 @@
   <div class="main-content-div">
     <h1>Radio Sounds</h1>
     <h2>Easily combine an audio file and an image to turn it into a video, for free!</h2>
+
+    <nav class="nav-buttons">
+      <p id="toHome">Home</p>
+      <p id="toVideoMaker">Audio + Image Combiner</p>
+    </nav>
+
+    <div>
+      <p>This feature is <strong>EXPERIMENTAL.</strong> It takes a long time and may or may not work, depending on your system and/or browser. It is reccomended that you try a short audio file, so that the combination process does not take as long. because it can be quite lengthy otherwise.</p>
+    </div>
+
     <label>Audio File
         <input type="file" name="audio" id="audioUploader" accept="audio/*" />
     </label>
@@ -33,7 +43,7 @@
         Image File
         <input type="file" id="imageUploader" accept="image/*" >
     </label>
-    <button id="combineBtn">Combine The Two!</button>
+    <button class="convertBtn" id="combineBtn">Combine The Two!</button>
     <p id="status"></p>
     <a class="download-link" href=""></a>
   </div>
