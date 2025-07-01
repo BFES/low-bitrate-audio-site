@@ -6,6 +6,10 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      input: {
+        main: 'index.html',
+        video: 'video.html'
+      },
       output: {
         manualChunks: {
           // prevent ffmpeg from being chunked separately (optional)

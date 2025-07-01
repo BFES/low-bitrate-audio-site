@@ -60,6 +60,3 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
   status.textContent = 'Done!';
 });
 
-document.getElementById('combineBtn').addEventListener('click', async () => {
-
-});
