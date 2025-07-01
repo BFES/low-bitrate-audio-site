@@ -1,5 +1,14 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 
+document.getElementById('toHome').addEventListener('click', () => {
+  window.location.href = 'index.html';  // or your audio reducer page
+});
+
+document.getElementById('toVideoMaker').addEventListener('click', () => {
+  window.location.href = 'video.html';  // or your video maker page
+});
+
+
 const ffmpeg = new FFmpeg({
     log: true,
     corePath: '/node_modules/@ffmpeg/core/dist/ffmpeg-core.js',
@@ -16,7 +25,7 @@ loadFFmpeg();
 
 
 document.getElementById('convertBtn').addEventListener('click', async () => {
-  const uploader = document.getElementById('uploader');
+  const uploader = document.getElementById('audioUploader');
   const link = document.querySelector(".download-link");
   link.href = "";
   link.textContent = '';
@@ -59,3 +68,4 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
 
   status.textContent = 'Done!';
 });
+

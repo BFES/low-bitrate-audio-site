@@ -26,11 +26,25 @@
   <div class="main-content-div">
     <h1>Radio Sounds</h1>
     <h2>Easily make your audio files sound "low quality," for free!</h2>
-    <input type="file" id="uploader" accept="audio/*" />
-    <button id="convertBtn">Convert to Lower Bitrate</button>
+
+
+    <nav class="nav-buttons">
+      <p id="toHome">Home</p>
+      <p id="toVideoMaker">Audio + Image Combiner</p>
+    </nav>
+
+    <div>
+      <p>This feature does exactly what it sounds like. Upload an audio file, wait a few seconds, download, and then enjoy the soothing sounds of low quality audio!</p>
+    </div>
+
+
+    <input type="file" id="audioUploader" accept="audio/*" />
+    <button class="convertBtn" id="convertBtn">Make Low Quality!</button>
     <p id="status"></p>
     <a class="download-link" href=""></a>
   </div>
+
+
   <div class="info-section">
     <h3>About Radio Sounds and BFES LLC</h3>
     <p>
@@ -48,7 +62,7 @@
   </div>
 
 
-  <footer>&copy; 2025 BFES LLC. Version 1.2.1, Built Using ffmpeg.wasm</footer>
+  <footer>&copy; 2025 BFES LLC. Version 2.0, Built Using ffmpeg.wasm</footer>
 
   <script type="module" src="/main.js"></script>
 </body>

@@ -6,6 +6,10 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      input: {
+        main: 'index.html',
+        video: 'video.html'
+      },
       output: {
         manualChunks: {
           // prevent ffmpeg from being chunked separately (optional)
@@ -14,6 +18,10 @@ export default defineConfig({
     }
   },
   server: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'require-corp'
+    },
     fs: {
       allow: ['.'] // Allow serving files from project root and node_modules
     }
