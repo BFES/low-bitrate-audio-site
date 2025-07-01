@@ -25,9 +25,15 @@
 <body>
   <div class="main-content-div">
     <h1>Radio Sounds</h1>
-    <h2>Easily make your audio files sound "low quality," for free!</h2>
-    <input type="file" id="audioUploader" accept="audio/*" />
-    <button id="convertBtn">Make Low Quality!</button>
+    <h2>Easily combine an audio file and an image to turn it into a video, for free!</h2>
+    <label>Audio File
+        <input type="file" name="audio" id="audioUploader" accept="audio/*" />
+    </label>
+    <label>
+        Image File
+        <input type="file" id="imageUploader" accept="image/*" >
+    </label>
+    <button id="combineBtn">Combine The Two!</button>
     <p id="status"></p>
     <a class="download-link" href=""></a>
   </div>

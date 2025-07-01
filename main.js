@@ -16,7 +16,7 @@ loadFFmpeg();
 
 
 document.getElementById('convertBtn').addEventListener('click', async () => {
-  const uploader = document.getElementById('uploader');
+  const uploader = document.getElementById('audioUploader');
   const link = document.querySelector(".download-link");
   link.href = "";
   link.textContent = '';
@@ -58,4 +58,8 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
   link.textContent = 'Download converted file';
 
   status.textContent = 'Done!';
+});
+
+document.getElementById('combineBtn').addEventListener('click', async () => {
+
 });

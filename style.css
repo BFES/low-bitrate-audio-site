@@ -38,6 +38,10 @@ h2 {
   text-align: center;
 }
 
+label {
+  margin: 1rem auto;
+}
+
 input[type="file"] {
   display: block;
   margin: 1rem auto;
