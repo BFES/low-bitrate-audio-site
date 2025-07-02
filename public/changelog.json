@@ -1,0 +1,60 @@
+[
+    {
+        "version": "2.3.1",
+        "date": "July 2, 2025",
+        "notes": [
+            "Fixed a problem where the changelog would not appear."
+        ]
+    },
+    {
+        "version": "2.3",
+        "date": "July 2, 2025",
+        "notes": [
+            "Added a Privacy Policy section to the site.",
+            "Fixed GIF support, so now it loops properly.",
+            "Added a status percentage to show completion of the different operations."
+        ]
+    },
+    {
+        "version": "2.2",
+        "date": "July 2, 2025",
+        "notes": [
+            "Added GIF support for the image and audio combiner.",
+            "Improved performance of the combiner."
+        ]
+    },
+    {
+        "version": "2.1",
+        "date": "July 1, 2025",
+        "notes": [
+            "Added a new tool to combine images and audio files into an mp4 file.",
+            "Added navigation buttons so people can access the different tools easier."
+        ]
+    },
+    {
+        "version": "2.0",
+        "date": "July 1, 2025",
+        "notes": [
+            "Changed some of the wording on and phrasing on the site.",
+            "Adjusted some of the CSS to make it look nicer."
+        ]
+    },
+    {
+        "version": "1.1",
+        "date": "June 30, 2025",
+        "notes": [
+            "Fixed an issue where the download link would duplicate itself if you tried to convert another file without refreshing the page.",
+            "Fixed an issue where the download link appeared underneath the footer instead of near the convert button.",
+            "Added a seperate and different layout for mobile screens (less than 600px wide).",
+            "Added file verification to ensure the user uploads an audio file."
+        ]
+    },
+    {
+        "version": "1.0",
+        "date": "June 30, 2025",
+        "notes": [
+            "Initial release!",
+            "Audio bitrate reducer only."
+        ]
+    }
+]

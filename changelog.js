@@ -11,7 +11,7 @@ document.getElementById('toChangelog').addEventListener('click', () => {
 });
 
 async function loadChangelog() {
-  const response = await fetch('changelog.json');
+  const response = await fetch('/changelog.json');
   const changelog = await response.json();
   const container = document.getElementById('changelogContent');
 
