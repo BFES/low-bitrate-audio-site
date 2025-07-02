@@ -9,6 +9,20 @@ document.getElementById('toVideoMaker').addEventListener('click', () => {
   window.location.href = 'video.html';  // or your video maker page
 });
 
+const ffmpeg = new FFmpeg({
+    log: true,
+    corePath: '/node_modules/@ffmpeg/core-mt/dist/ffmpeg-core.js',
+});
+const status = document.getElementById('status');
+
+const loadFFmpeg = async () => {
+  status.textContent = 'Loading FFmpeg...';
+  await ffmpeg.load();
+  status.textContent = 'Ready!';
+};
+
+loadFFmpeg();
+
 function normalizeImageSafe(file) {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -34,20 +48,71 @@ function normalizeImageSafe(file) {
   });
 }
 
+async function combineMedia(imageFile, audioFile, outputName = 'output.mp4') {
+  const isGif = imageFile.type === 'image/gif';
 
-const ffmpeg = new FFmpeg({
-    log: true,
-    corePath: '/node_modules/@ffmpeg/core-mt/dist/ffmpeg-core.js',
-});
-const status = document.getElementById('status');
+  await ffmpeg.writeFile('audio.mp3', new Uint8Array(await audioFile.arrayBuffer()));
 
-const loadFFmpeg = async () => {
-  status.textContent = 'Loading FFmpeg...';
-  await ffmpeg.load();
-  status.textContent = 'Ready!';
-};
+  if (isGif) {
+    await ffmpeg.writeFile('input.gif', await fetchFile(imageFile));
+    
+    ffmpeg.on('log', ({ message }) => {
+      console.log('FFmpeg log:', message);
+    });
+    await ffmpeg.exec([
+      '-stream_loop', '-1',
+      '-i', 'input.gif',
+      '-i', 'audio.mp3',
+      '-c:v', 'libx264',
+      '-preset', 'veryfast',
+      '-crf', '28',
+      '-c:a', 'aac',
+      '-b:a', '8k',
+      '-pix_fmt', 'yuv420p',
+      '-shortest',
+      '-movflags', 'faststart',
+      outputName
+    ])
 
-loadFFmpeg();
+    // Combine video with audio
+    await ffmpeg.exec([
+      '-i', 'video.mp4',
+      '-i', 'audio.mp3',
+      '-c:v', 'copy',
+      '-c:a', 'aac',
+      '-b:a', '8k',
+      '-shortest',
+      '-movflags', 'faststart',
+      outputName
+    ]);
+  } else {
+    // Non-GIF processing (unchanged)
+    const normalizedImageBlob = await normalizeImageSafe(imageFile);
+    const normalizedImageArrayBuffer = await normalizedImageBlob.arrayBuffer();
+    await ffmpeg.writeFile('image.png', new Uint8Array(normalizedImageArrayBuffer));
+
+    ffmpeg.on('log', ({ message }) => {
+      console.log('FFmpeg log:', message);
+    });
+
+    await ffmpeg.exec([
+      '-loop', '1',
+      '-i', 'image.png',
+      '-i', 'audio.mp3',
+      '-c:v', 'libx264',
+      '-tune', 'stillimage',
+      '-c:a', 'aac',
+      '-b:a', '8k',
+      '-pix_fmt', 'yuv420p',
+      '-threads', '4',
+      '-shortest',
+      outputName
+    ]);
+  }
+
+  const data = await ffmpeg.readFile(outputName);
+  return new Blob([data.buffer], { type: 'video/mp4' });
+}
 
 document.getElementById('combineBtn').addEventListener('click', async () => {
   const audioUploader = document.getElementById('audioUploader');
@@ -82,42 +147,7 @@ document.getElementById('combineBtn').addEventListener('click', async () => {
 
   status.textContent = "Combining...";
 
-  const audioResponse = await fetch(URL.createObjectURL(audioFile));
-  const audioData = await audioResponse.arrayBuffer();
-  await ffmpeg.writeFile('audio.mp3', await fetchFile(audioFile));
-
-  const normalizedImageBlob = await normalizeImageSafe(imageFile);
-  const normalizedImageArrayBuffer = await normalizedImageBlob.arrayBuffer();
-  await ffmpeg.writeFile('image.png', new Uint8Array(normalizedImageArrayBuffer));
-
-  ffmpeg.on('log', ({ message }) => {
-    console.log('FFmpeg log:', message);
-    });
-
-  //console.log(await ffmpeg.listFiles());
-
-  await ffmpeg.exec([
-    '-loop', '1',
-    '-i', 'image.png',
-    '-i', 'audio.mp3',
-    '-c:v', 'libx264',
-    '-tune', 'stillimage',
-    '-c:a', 'aac',
-    '-b:a', '8k',
-    '-pix_fmt', 'yuv420p',
-    '-threads', '4',
-    '-shortest',
-    'output.mp4'
-  ]);
-
-
-  ffmpeg.on('progress', ({ progress }) => {
-    console.log(`Progress: ${(progress * 100).toFixed(2)}%`);
-  });
-
-  const data = await ffmpeg.readFile('output.mp4');
-
-  const videoBlob = new Blob([data.buffer], { type: 'video/mp4'});
+  const videoBlob = await combineMedia(imageFile, audioFile)
   const videoUrl = URL.createObjectURL(videoBlob);
 
   downloadLink.href = videoUrl;
