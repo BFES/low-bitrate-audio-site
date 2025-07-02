@@ -9,6 +9,31 @@ document.getElementById('toVideoMaker').addEventListener('click', () => {
   window.location.href = 'video.html';  // or your video maker page
 });
 
+function normalizeImageSafe(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      let safeWidth = Math.min(img.width, 1920);
+      let safeHeight = Math.min(img.height, 1080);
+
+      // Ensure both dimensions are even numbers
+      if (safeWidth % 2 !== 0) safeWidth--;
+      if (safeHeight % 2 !== 0) safeHeight--;
+
+      const canvas = document.createElement("canvas");
+      canvas.width = safeWidth;
+      canvas.height = safeHeight;
+      const ctx = canvas.getContext("2d");
+      ctx.drawImage(img, 0, 0, safeWidth, safeHeight);
+      canvas.toBlob((blob) => {
+        resolve(blob);
+      }, "image/png");
+    };
+    img.onerror = (e) => reject(e);
+    img.src = URL.createObjectURL(file);
+  });
+}
+
 
 const ffmpeg = new FFmpeg({
     log: true,
@@ -59,11 +84,11 @@ document.getElementById('combineBtn').addEventListener('click', async () => {
 
   const audioResponse = await fetch(URL.createObjectURL(audioFile));
   const audioData = await audioResponse.arrayBuffer();
-  const imageResponse = await fetch(URL.createObjectURL(imageFile));
-  const imageData = await imageResponse.arrayBuffer();
-
-  await ffmpeg.writeFile('image.jpg', await fetchFile(imageFile));
   await ffmpeg.writeFile('audio.mp3', await fetchFile(audioFile));
+
+  const normalizedImageBlob = await normalizeImageSafe(imageFile);
+  const normalizedImageArrayBuffer = await normalizedImageBlob.arrayBuffer();
+  await ffmpeg.writeFile('image.png', new Uint8Array(normalizedImageArrayBuffer));
 
   ffmpeg.on('log', ({ message }) => {
     console.log('FFmpeg log:', message);
@@ -73,7 +98,7 @@ document.getElementById('combineBtn').addEventListener('click', async () => {
 
   await ffmpeg.exec([
     '-loop', '1',
-    '-i', 'image.jpg',
+    '-i', 'image.png',
     '-i', 'audio.mp3',
     '-c:v', 'libx264',
     '-tune', 'stillimage',
@@ -98,4 +123,6 @@ document.getElementById('combineBtn').addEventListener('click', async () => {
   downloadLink.href = videoUrl;
   downloadLink.download = 'output.mp4';
   downloadLink.textContent = "Download Your Video!";
+
+  status.textContent = "Done!";
 });
