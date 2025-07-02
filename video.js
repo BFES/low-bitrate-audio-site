@@ -9,6 +9,18 @@ document.getElementById('toVideoMaker').addEventListener('click', () => {
   window.location.href = 'video.html';  // or your video maker page
 });
 
+document.getElementById('toChangelog').addEventListener('click', () => {
+  window.location.href = 'changelog.html';  // or your video maker page
+});
+
+
+document.getElementById('togglePrivacy').addEventListener('click', () => {
+  const content = document.getElementById('privacyContent');
+  content.classList.toggle('open');
+});
+
+
+
 const ffmpeg = new FFmpeg({
     log: true,
     corePath: '/node_modules/@ffmpeg/core-mt/dist/ffmpeg-core.js',
@@ -56,9 +68,7 @@ async function combineMedia(imageFile, audioFile, outputName = 'output.mp4') {
   if (isGif) {
     await ffmpeg.writeFile('input.gif', await fetchFile(imageFile));
     
-    ffmpeg.on('log', ({ message }) => {
-      console.log('FFmpeg log:', message);
-    });
+    status.textContent = `Converting GIF to mp4...`
     await ffmpeg.exec([
       '-stream_loop', '-1',
       '-i', 'input.gif',
@@ -74,6 +84,9 @@ async function combineMedia(imageFile, audioFile, outputName = 'output.mp4') {
       outputName
     ])
 
+    ffmpeg.on('progress', ({ progress }) => {
+      status.textContent = `Progress: ${(progress * 100).toFixed(0)}%`; 
+    });
     // Combine video with audio
     await ffmpeg.exec([
       '-i', 'video.mp4',
@@ -85,16 +98,17 @@ async function combineMedia(imageFile, audioFile, outputName = 'output.mp4') {
       '-movflags', 'faststart',
       outputName
     ]);
+
+
   } else {
     // Non-GIF processing (unchanged)
     const normalizedImageBlob = await normalizeImageSafe(imageFile);
     const normalizedImageArrayBuffer = await normalizedImageBlob.arrayBuffer();
     await ffmpeg.writeFile('image.png', new Uint8Array(normalizedImageArrayBuffer));
 
-    ffmpeg.on('log', ({ message }) => {
-      console.log('FFmpeg log:', message);
+    ffmpeg.on('progress', ({ progress }) => {
+      status.textContent = `Progress: ${(progress * 100).toFixed(0)}%`; 
     });
-
     await ffmpeg.exec([
       '-loop', '1',
       '-i', 'image.png',
@@ -118,6 +132,8 @@ document.getElementById('combineBtn').addEventListener('click', async () => {
   const audioUploader = document.getElementById('audioUploader');
   const imageUploader = document.getElementById('imageUploader');
   const downloadLink = document.querySelector('.download-link');
+  downloadLink.href = "";
+  downloadLink.textContent = '';
 
   if(audioUploader.files.length === 0) {
     alert('Please select an audio file.');
@@ -155,4 +171,5 @@ document.getElementById('combineBtn').addEventListener('click', async () => {
   downloadLink.textContent = "Download Your Video!";
 
   status.textContent = "Done!";
+  ffmpeg.off('progress');
 });

@@ -8,6 +8,17 @@ document.getElementById('toVideoMaker').addEventListener('click', () => {
   window.location.href = 'video.html';  // or your video maker page
 });
 
+document.getElementById('toChangelog').addEventListener('click', () => {
+  window.location.href = 'changelog.html';  // or your video maker page
+});
+
+document.getElementById('togglePrivacy').addEventListener('click', () => {
+  const content = document.getElementById('privacyContent');
+  content.classList.toggle('open');
+});
+
+
+
 
 const ffmpeg = new FFmpeg({
     log: true,
@@ -50,7 +61,9 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
   // ffmpeg.FS('writeFile', file.name, new Uint8Array(data1));
   await ffmpeg.writeFile(file.name, new Uint8Array(data1));
 
-
+  ffmpeg.on('progress', ({ progress }) => {
+      status.textContent = `Progress: ${(progress * 100).toFixed(0)}%`; 
+  });
   await ffmpeg.exec([
     '-i', file.name,
     '-b:a', '8k',
@@ -64,8 +77,9 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
 
   link.href = url;
   link.download = 'output.mp3';
-  link.textContent = 'Download converted file';
+  link.textContent = 'Download Your New File!';
 
   status.textContent = 'Done!';
+  ffmpeg.off('progress');
 });
 
