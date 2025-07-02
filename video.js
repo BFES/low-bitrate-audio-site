@@ -63,9 +63,7 @@ async function combineMedia(imageFile, audioFile, outputName = 'output.mp4') {
   if (isGif) {
     await ffmpeg.writeFile('input.gif', await fetchFile(imageFile));
     
-    ffmpeg.on('log', ({ message }) => {
-      console.log('FFmpeg log:', message);
-    });
+    status.textContent = `Converting GIF to mp4...`
     await ffmpeg.exec([
       '-stream_loop', '-1',
       '-i', 'input.gif',
@@ -81,6 +79,9 @@ async function combineMedia(imageFile, audioFile, outputName = 'output.mp4') {
       outputName
     ])
 
+    ffmpeg.on('progress', ({ progress }) => {
+      status.textContent = `Progress: ${(progress * 100).toFixed(0)}%`; 
+    });
     // Combine video with audio
     await ffmpeg.exec([
       '-i', 'video.mp4',
@@ -92,16 +93,17 @@ async function combineMedia(imageFile, audioFile, outputName = 'output.mp4') {
       '-movflags', 'faststart',
       outputName
     ]);
+
+
   } else {
     // Non-GIF processing (unchanged)
     const normalizedImageBlob = await normalizeImageSafe(imageFile);
     const normalizedImageArrayBuffer = await normalizedImageBlob.arrayBuffer();
     await ffmpeg.writeFile('image.png', new Uint8Array(normalizedImageArrayBuffer));
 
-    ffmpeg.on('log', ({ message }) => {
-      console.log('FFmpeg log:', message);
+    ffmpeg.on('progress', ({ progress }) => {
+      status.textContent = `Progress: ${(progress * 100).toFixed(0)}%`; 
     });
-
     await ffmpeg.exec([
       '-loop', '1',
       '-i', 'image.png',
@@ -164,4 +166,5 @@ document.getElementById('combineBtn').addEventListener('click', async () => {
   downloadLink.textContent = "Download Your Video!";
 
   status.textContent = "Done!";
+  ffmpeg.off('progress');
 });

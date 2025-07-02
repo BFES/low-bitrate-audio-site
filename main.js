@@ -57,7 +57,9 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
   // ffmpeg.FS('writeFile', file.name, new Uint8Array(data1));
   await ffmpeg.writeFile(file.name, new Uint8Array(data1));
 
-
+  ffmpeg.on('progress', ({ progress }) => {
+      status.textContent = `Progress: ${(progress * 100).toFixed(0)}%`; 
+  });
   await ffmpeg.exec([
     '-i', file.name,
     '-b:a', '8k',
@@ -74,5 +76,6 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
   link.textContent = 'Download Your New File!';
 
   status.textContent = 'Done!';
+  ffmpeg.off('progress');
 });
 
