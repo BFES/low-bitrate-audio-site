@@ -8,7 +8,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        video: 'video.html'
+        video: 'video.html',
+        changelog: 'changelog.html'
       },
       output: {
         manualChunks: {
