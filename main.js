@@ -8,6 +8,10 @@ document.getElementById('toVideoMaker').addEventListener('click', () => {
   window.location.href = 'video.html';  // or your video maker page
 });
 
+document.getElementById('toChangelog').addEventListener('click', () => {
+  window.location.href = 'changelog.html';  // or your video maker page
+});
+
 document.getElementById('togglePrivacy').addEventListener('click', () => {
   const content = document.getElementById('privacyContent');
   content.classList.toggle('open');
