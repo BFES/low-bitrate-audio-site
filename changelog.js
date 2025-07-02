@@ -10,6 +10,11 @@ document.getElementById('toChangelog').addEventListener('click', () => {
   window.location.href = 'changelog.html';  // or your video maker page
 });
 
+document.getElementById('togglePrivacy').addEventListener('click', () => {
+  const content = document.getElementById('privacyContent');
+  content.classList.toggle('open');
+});
+
 async function loadChangelog() {
   const response = await fetch('/changelog.json');
   const changelog = await response.json();

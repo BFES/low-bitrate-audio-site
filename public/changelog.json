@@ -1,5 +1,12 @@
 [
     {
+        "version": "2.3.2",
+        "date": "July 2, 2025",
+        "notes": [
+            "Fixed a problem where the privacy policy would not open on the changelog page."
+        ]
+    },
+    {
         "version": "2.3.1",
         "date": "July 2, 2025",
         "notes": [
