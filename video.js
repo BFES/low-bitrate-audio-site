@@ -9,6 +9,13 @@ document.getElementById('toVideoMaker').addEventListener('click', () => {
   window.location.href = 'video.html';  // or your video maker page
 });
 
+document.getElementById('togglePrivacy').addEventListener('click', () => {
+  const content = document.getElementById('privacyContent');
+  content.classList.toggle('open');
+});
+
+
+
 const ffmpeg = new FFmpeg({
     log: true,
     corePath: '/node_modules/@ffmpeg/core-mt/dist/ffmpeg-core.js',
@@ -118,6 +125,8 @@ document.getElementById('combineBtn').addEventListener('click', async () => {
   const audioUploader = document.getElementById('audioUploader');
   const imageUploader = document.getElementById('imageUploader');
   const downloadLink = document.querySelector('.download-link');
+  downloadLink.href = "";
+  downloadLink.textContent = '';
 
   if(audioUploader.files.length === 0) {
     alert('Please select an audio file.');

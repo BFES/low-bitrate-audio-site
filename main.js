@@ -8,6 +8,13 @@ document.getElementById('toVideoMaker').addEventListener('click', () => {
   window.location.href = 'video.html';  // or your video maker page
 });
 
+document.getElementById('togglePrivacy').addEventListener('click', () => {
+  const content = document.getElementById('privacyContent');
+  content.classList.toggle('open');
+});
+
+
+
 
 const ffmpeg = new FFmpeg({
     log: true,
@@ -64,7 +71,7 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
 
   link.href = url;
   link.download = 'output.mp3';
-  link.textContent = 'Download converted file';
+  link.textContent = 'Download Your New File!';
 
   status.textContent = 'Done!';
 });
