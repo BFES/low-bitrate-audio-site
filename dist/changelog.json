@@ -1,9 +1,22 @@
 [
     {
+        "version": "3.0",
+        "date": "July 3, 2025",
+        "notes": [
+            "New Feature: added a tool that lets you reduce the quality of images.",
+            "Adjusted CSS of background and privacy policy drop-down.",
+            "Changed the name of the site: Radio Sounds -> BitMash",
+            "Updated Favicon",
+            "Updated all meta-data and social tags for social media sharing.",
+            "Updated all pages of the site.",
+            "And quite a few more small changes..."
+        ]
+    },
+    {
         "version": "2.4",
         "date": "July 3, 2025",
         "notes": [
-            "Made the main content of the site wider on desktop size screens via CSS",
+            "Made the main content of the site wider on desktop size screens via CSS.",
             "Changed some of the wording on the site."
         ]
     },

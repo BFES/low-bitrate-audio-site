@@ -8,6 +8,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
+        image: 'image.html',
         video: 'video.html',
         changelog: 'changelog.html'
       },
