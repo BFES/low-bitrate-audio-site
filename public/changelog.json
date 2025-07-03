@@ -1,5 +1,13 @@
 [
     {
+        "version": "2.4",
+        "date": "July 3, 2025",
+        "notes": [
+            "Made the main content of the site wider on desktop size screens via CSS",
+            "Changed some of the wording on the site."
+        ]
+    },
+    {
         "version": "2.3.2",
         "date": "July 2, 2025",
         "notes": [
