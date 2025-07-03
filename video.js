@@ -2,22 +2,26 @@ import { FFmpeg } from '@ffmpeg/ffmpeg';
 import { fetchFile } from '@ffmpeg/util';
 
 document.getElementById('toHome').addEventListener('click', () => {
-  window.location.href = 'index.html';  // or your audio reducer page
+  window.location.href = 'index.html';  
 });
 
 document.getElementById('toVideoMaker').addEventListener('click', () => {
-  window.location.href = 'video.html';  // or your video maker page
+  window.location.href = 'video.html'; 
 });
 
 document.getElementById('toChangelog').addEventListener('click', () => {
-  window.location.href = 'changelog.html';  // or your video maker page
+  window.location.href = 'changelog.html';  
 });
 
+document.getElementById('toImageTool').addEventListener('click', () => {
+  window.location.href = 'image.html'; 
+});
 
 document.getElementById('togglePrivacy').addEventListener('click', () => {
   const content = document.getElementById('privacyContent');
   content.classList.toggle('open');
 });
+
 
 
 

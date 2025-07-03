@@ -1,23 +1,25 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg';
 
 document.getElementById('toHome').addEventListener('click', () => {
-  window.location.href = 'index.html';  // or your audio reducer page
+  window.location.href = 'index.html';  
 });
 
 document.getElementById('toVideoMaker').addEventListener('click', () => {
-  window.location.href = 'video.html';  // or your video maker page
+  window.location.href = 'video.html'; 
 });
 
 document.getElementById('toChangelog').addEventListener('click', () => {
-  window.location.href = 'changelog.html';  // or your video maker page
+  window.location.href = 'changelog.html';  
+});
+
+document.getElementById('toImageTool').addEventListener('click', () => {
+  window.location.href = 'image.html'; 
 });
 
 document.getElementById('togglePrivacy').addEventListener('click', () => {
   const content = document.getElementById('privacyContent');
   content.classList.toggle('open');
 });
-
-
 
 
 const ffmpeg = new FFmpeg({
@@ -41,10 +43,9 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
   link.href = "";
   link.textContent = '';
   if (uploader.files.length === 0) {
-    alert('Please select a file.');
+    alert('Please select an audio file.');
     return;
   }
-
 
   const file = uploader.files[0];
 
@@ -77,7 +78,7 @@ document.getElementById('convertBtn').addEventListener('click', async () => {
 
   link.href = url;
   link.download = 'output.mp3';
-  link.textContent = 'Download Your New File!';
+  link.textContent = 'Download Your New Audio!';
 
   status.textContent = 'Done!';
   ffmpeg.off('progress');

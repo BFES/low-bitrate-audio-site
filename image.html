@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Basic SEO -->
+    <!-- Basic SEO -->
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>BitMash — Tweak, Mash, and Mangle Your Media</title>
@@ -16,7 +16,7 @@
 <meta property="og:title" content="BitMash — Tweak, Mash, and Mangle Your Media" />
 <meta property="og:description" content="Mash your media into gloriously terrible creations. Lower audio quality, pixelate images, and combine them into weird videos. All in your browser." />
 <meta property="og:image" content="/public/homeImage.png" />
-<meta property="og:url" content="https://bitmash.netlify.app/" />
+<meta property="og:url" content="https://bitmash.netlify.app/image.html" />
 <meta property="og:type" content="website" />
 
 <!-- Twitter / X Card -->
@@ -41,20 +41,20 @@
       <p id="toVideoMaker">Audio + Image Combiner</p>
       <p id="toChangelog">Changelog</p>
     </nav>
-    <h3 class="pageDescription">
-      Easily make your audio files sound "low quality" for free below! 
-    </h3>
+    <h3 class="pageDescription">Easily make your image files look "low quality" for free below!</h3>
     <div>
-      <p>This page turns your audio files into something that sounds like it came out of a phone call. Upload an audio file, click the green button below, wait a few seconds, download, and then enjoy the soothing sounds of low quality audio! Also check out the audio and image combiner tool! The audio you create here is perfect for that tool!</p>
+      <p>
+        <p>This page turns your image files into something that looks very low quality. Upload an image file, click the green button below, wait a few seconds, download, and then enjoy the pixelated beauty of low quality image! Also check out the audio and image combiner tool! The image you create here is perfect for that tool!</p>
+      </p>
     </div>
-
-
-    <input type="file" id="audioUploader" accept="audio/*" />
+    <input type="file" id="imageUploader" accept="image/*" />
     <button class="convertBtn" id="convertBtn">Make It Low Quality!</button>
     <p id="status"></p>
     <a class="download-link" href=""></a>
-  </div>
 
+
+    <script type="module" src="/image.js"></script>
+  </div>
 
   <div class="info-section">
     <h3>About BitMash and BFES LLC</h3>
@@ -103,7 +103,5 @@
 
 
   <footer>&copy; 2025 BFES LLC. Version 3.0, Built Using ffmpeg.wasm</footer>
-
-  <script type="module" src="/main.js"></script>
 </body>
 </html>
