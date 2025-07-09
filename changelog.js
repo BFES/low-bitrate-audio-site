@@ -19,6 +19,11 @@ document.getElementById('togglePrivacy').addEventListener('click', () => {
   content.classList.toggle('open');
 });
 
+document.getElementById('toggleTOS').addEventListener('click', () => {
+  const tosContent = document.getElementById('tosContent');
+  tosContent.classList.toggle('open');
+});
+
 async function loadChangelog() {
   const response = await fetch('/changelog.json');
   const changelog = await response.json();
