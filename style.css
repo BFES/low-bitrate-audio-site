@@ -3,7 +3,9 @@ body {
   font-family: sans-serif;
   padding: 2rem;
   background: #649eaf;
-  background: linear-gradient();background: linear-gradient(0deg,rgb(18, 115, 145) 0%, rgb(82, 180, 138) 70%, rgb(206, 255, 234) 100%);margin: 0;
+  background: linear-gradient();
+  background: linear-gradient(0deg, rgb(18, 115, 145) 0%, rgb(82, 180, 138) 70%, rgb(206, 255, 234) 100%);
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,12 +13,68 @@ body {
   min-height: 100vh;
 }
 
+/* ========== Page Description ========== */
+.page-description {
+  background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
+  color: #f8f8f8;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  font-family: 'Inter', 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+.page-description h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #00ff99;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.page-description p {
+  font-size: 1.1rem;
+  margin: 0.75rem 0;
+}
+
+.page-description a {
+  color: #00e6e6;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.page-description a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+@media (max-width: 600px) {
+  .page-description {
+    padding: 1.5rem;
+    margin: 1.5rem 1rem;
+  }
+
+  .page-description h2 {
+    font-size: 1.6rem;
+  }
+
+  .page-description p {
+    font-size: 1rem;
+  }
+}
+
+
 /* ========== Navigation Buttons ========= */
 .nav-buttons {
   display: flex;
-  gap: 1rem; /* space between buttons */
+  gap: 1rem;
+  /* space between buttons */
   margin-bottom: 2rem;
-  flex-wrap: wrap; /* optional if you want them to stack on small screens */
+  flex-wrap: wrap;
+  /* optional if you want them to stack on small screens */
 }
 
 .nav-buttons p {
@@ -36,6 +94,7 @@ body {
 .main-content-div {
   border: black solid;
   border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   background-color: rgba(240, 240, 240, 0.795);
   padding: 2rem;
   width: 100%;
@@ -120,7 +179,7 @@ a.download-link:hover {
 }
 
 .info-section {
-  margin-top: 2rem;
+  padding-bottom: 2rem;
   margin-left: 2rem;
   margin-right: 2rem;
   text-align: center;
@@ -216,17 +275,19 @@ footer {
 }
 
 .collapsible-content {
-  width: 1600px;
+  max-width: 800px;
   max-height: 0;
   overflow: hidden;
   padding: 0 1rem;
   margin-top: 0.5rem;
   background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
   transition: max-height 0.4s ease, padding 0.4s ease;
 }
 
 .collapsible-content.open {
+  border: black solid;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
   max-height: 1200px;
   padding: 1rem;
 }

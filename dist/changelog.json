@@ -1,5 +1,12 @@
 [
     {
+        "version": "3.1.1",
+        "date": "July 9, 2025",
+        "notes": [
+            "Added more describing text at the top of each page before the tool."
+        ]
+    },
+    {
         "version": "3.1",
         "date": "July 8, 2025",
         "notes": [

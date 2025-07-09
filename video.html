@@ -31,9 +31,15 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <section class="page-description">
+  <h2>Welcome to BitMash!</h2>
+  <p>BitMash is a free, browser-based media toolkit built for creative people who love the charm of lo-fi and intentionally degraded media. Whether you’re lowering audio bitrates, shrinking image quality, or combining GIFs and sounds into quick videos, BitMash makes it fast, easy, and completely private. This means no uploads and no data ever leaving your device.</p>
+  <p>This site was made for anyone who loves experimenting with quirky, nostalgic, or meme-friendly media effects, all powered by modern browser technology. Everything runs locally in your browser using WebAssembly and JavaScript.</p>
+  <p>Check out the tools below and have some fun with your files!</p>
+  </section>
+  
   <div class="main-content-div">
-    <h1>BitMash</h1>
-    <h2><i>Mash Your Bits and Media, Make Some Noise</i></h2>
+    <h2>BitMash <i>~ Mash Your Bits and Media, Make Some Noise</i></h2>
     <nav class="nav-buttons">
       <p id="toHome">Home (Audio Tool)</p>
       <p id="toImageTool">Image Tool</p>
@@ -43,7 +49,8 @@
     <h3 class="pageDescription">Easily combine an audio file and an image to turn it into a video, for free below!</h3>
 
     <div>
-      <p>This feature does exactly what you think it does! Pick an audio file, pick an image file, and press the green button! This process takes significantly longer than the audio and image tools on this site, so please be patient. GIF's are also supported as images.</p>
+      <p>Combine your favorite GIFs or images with custom audio to instantly create simple videos for sharing, memes, or projects. This tool lets you pair looping visuals with your chosen soundtrack, with the entire process handled in your browser for privacy and speed.</p>
+      <p>No uploads, no waiting, and no complicated software. Just choose your files, click combine, and download your video.</p>
     </div>
 
     <label>Audio File
@@ -53,10 +60,11 @@
         Image File
         <input type="file" id="imageUploader" accept="image/*" >
     </label>
-    <button class="convertBtn" id="combineBtn">Combine The Two!</button>
+    <button class="convertBtn" id="combineBtn">Combine!</button>
     <p id="status"></p>
     <a class="download-link" href=""></a>
   </div>
+
   <div class="info-section">
     <h3>About BitMash and BFES LLC</h3>
     <p>
@@ -120,9 +128,7 @@
     </div>
   </section>
 
-
-  <footer>&copy; 2025 BFES LLC. Version 3.1, Built Using ffmpeg.wasm</footer>
-
+  <footer>&copy; 2025 BFES LLC. Version 3.1.1, Built Using ffmpeg.wasm</footer>
   <script type="module" src="/video.js"></script>
 </body>
 </html>

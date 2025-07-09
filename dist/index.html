@@ -29,15 +29,21 @@
   <meta name="google-adsense-account" content="ca-pub-8013587334483656">
 
   <link rel="icon" href="/assets/favicon-0PfwvJ62.ico" />
-  <script type="module" crossorigin src="/assets/main-Ctbf3wO7.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/style-Ds3KEC3X.js">
+  <script type="module" crossorigin src="/assets/main-C4eroofl.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/style-DrSXatUx.js">
   <link rel="modulepreload" crossorigin href="/assets/types-D-QKHKUd.js">
-  <link rel="stylesheet" crossorigin href="/assets/style-B1My2-J4.css">
+  <link rel="stylesheet" crossorigin href="/assets/style-mxB8skvV.css">
 </head>
 <body>
+  <section class="page-description">
+  <h2>Welcome to BitMash!</h2>
+  <p>BitMash is a free, browser-based media toolkit built for creative people who love the charm of lo-fi and intentionally degraded media. Whether you’re lowering audio bitrates, shrinking image quality, or combining GIFs and sounds into quick videos, BitMash makes it fast, easy, and completely private. This means no uploads and no data ever leaving your device.</p>
+  <p>This site was made for anyone who loves experimenting with quirky, nostalgic, or meme-friendly media effects, all powered by modern browser technology. Everything runs locally in your browser using WebAssembly and JavaScript.</p>
+  <p>Check out the tools below and have some fun with your files!</p>
+  </section>
+
   <div class="main-content-div">
-    <h1>BitMash</h1>
-    <h2><i>Mash Your Bits and Media, Make Some Noise</i></h2>
+    <h2>BitMash <i>~ Mash Your Bits and Media, Make Some Noise</i></h2>
     <nav class="nav-buttons">
       <p id="toHome">Home (Audio Tool)</p>
       <p id="toImageTool">Image Tool</p>
@@ -47,19 +53,17 @@
     <h3 class="pageDescription">
       Easily make your audio files sound "low quality" for free below! 
     </h3>
-    <div>
-      <p>This page turns your audio files into something that sounds like it came out of a phone call. Upload an audio file, click the green button below, wait a few seconds, download, and then enjoy the soothing sounds of low quality audio! Also check out the audio and image combiner tool! The audio you create here is perfect for that tool!</p>
-    </div>
+    <p>Turn crisp, high-bitrate audio files into intentionally gritty, low-fidelity versions with our free Audio Quality Reducer. Whether you’re recreating the sound of an old radio broadcast or crafting audio for a lo-fi video project, this tool makes it simple and secure — no uploads, no accounts, no hidden tracking.</p>
+    <p>The entire conversion process happens directly in your browser using FFmpeg via WebAssembly, keeping your files private and your workflow fast.</p>
+    <p>Upload your file, hit convert, and download your quirky new audio in seconds.</p>
 
 
     <input type="file" id="audioUploader" accept="audio/*" />
     <button class="convertBtn" id="convertBtn">Make It Low Quality!</button>
     <p id="status"></p>
     <a class="download-link" href=""></a>
-  </div>
 
-
-  <div class="info-section">
+    <div class="info-section">
     <h3>About BitMash and BFES LLC</h3>
     <p>
       BitMash is a free, browser-based media tool that transforms clean, high-quality audio and image files into intentionally low-fidelity, retro-styled versions. Powered by WebAssembly and FFmpeg, every conversion runs locally in your browser. This means no uploads to any servers, and no data ever leaves your device. Originally built to recreate the quirky, compressed audio effects found in old music videos and meme videos, BitMash has grown into a playful toolkit for reducing audio quality, pixelating images, and even combining them into offbeat video creations. It’s a simple, fun way to mangle your media in seconds.
@@ -73,6 +77,7 @@
       Questions, feedback, or feature requests? Reach out at:
       <a href="mailto:bfengineeringsolutions.llc@gmail.com">bfengineeringsolutions.llc@gmail.com</a>
     </p>
+  </div>
   </div>
 
   <section class="privacy-section">
@@ -122,9 +127,6 @@
     </div>
   </section>
 
-
-
-  <footer>&copy; 2025 BFES LLC. Version 3.1, Built Using ffmpeg.wasm</footer>
-
+  <footer>&copy; 2025 BFES LLC. Version 3.1.1, Built Using ffmpeg.wasm</footer>
 </body>
 </html>
