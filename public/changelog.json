@@ -1,5 +1,12 @@
 [
     {
+        "version": "3.1",
+        "date": "July 8, 2025",
+        "notes": [
+            "Added a Terms of Service section."
+        ]
+    },
+    {
         "version": "3.0",
         "date": "July 3, 2025",
         "notes": [
